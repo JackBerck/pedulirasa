@@ -23,23 +23,29 @@
                     <p class="normal-font-size mb-4 md:text-center">
                         Selamat datang kembali!
                     </p>
-                    <form action="" class="small-font-size flex flex-col gap-4 mb-4">
+                    <form action="" method="post" class="small-font-size flex flex-col gap-4 mb-4">
+                        @csrf
                         <div class="">
-                            <label class="block font-semibold mb-2">Email</label>
+                            <label class="block font-semibold mb-2" for="email-input">Email</label>
                             <input
                                 class="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                                 type="email"
+                                name="email"
+                                id="email-input"
                                 placeholder="Masukkan alamat email..."
+                                required
                             />
                         </div>
                         <div class="">
                             <div class="flex justify-between">
-                                <label class="block font-semibold mb-2">Password</label>
+                                <label class="block font-semibold mb-2" for="password-input">Password</label>
                                 <a href="#" class="text-xs hover:underline transition-all duration-75">Lupa password?</a>
                             </div>
                             <input
                                 class="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                                 type="password"
+                                name="password"
+                                id="password-input"
                                 placeholder="Masukkan password..."
                             />
                         </div>
@@ -54,7 +60,7 @@
                     <p class="small-font-size text-center">
                         Belum punya akun?
                         <a
-                            href="/signup"
+                            href="/register"
                             class="inline-block py-1 px-2 bg-green-base text-light-base rounded-md"
                         >Daftar sekarang</a
                         >

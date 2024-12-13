@@ -23,7 +23,8 @@
                     <p class="normal-font-size mb-4 md:text-center">
                         Ayo bergabung dengan kami!
                     </p>
-                    <form action="" class="small-font-size flex flex-col gap-4 mb-4">
+                    <form id="register-form" action="" method="post" class="small-font-size flex flex-col gap-4 mb-4">
+                        @csrf
                         <div class="">
                             <label class="block font-semibold mb-2" for="name-input">Nama Lengkap <span class="text-red-600">*</span></label>
                             <input
@@ -86,6 +87,9 @@
                                 required
                             />
                         </div>
+                        <div id="password-error" class="text-red-600 text-sm hidden">
+                            Password dan konfirmasi password tidak cocok.
+                        </div>
                         <div class="">
                             <button
                                 type="submit"
@@ -106,4 +110,19 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            const password = document.getElementById('password-input').value;
+            const confirmPassword = document.getElementById('confirm-password-input').value;
+            const errorDiv = document.getElementById('password-error');
+
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                errorDiv.classList.remove('hidden');
+            } else {
+                errorDiv.classList.add('hidden');
+            }
+        });
+    </script>
 </x-layout>
